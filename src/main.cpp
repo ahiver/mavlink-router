@@ -229,6 +229,10 @@ static int parse_argv(int argc, char *argv[], Configuration &config)
             config.log_config.logs_dir.assign((const char *)optarg);
             break;
         }
+        case 'L': {
+            config.log_config.tlogs_dir.assign((const char *)optarg);
+            break;
+        }
         case 'g': {
             try {
                 config.debug_log_level = log_level_from_str(optarg);

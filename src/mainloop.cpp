@@ -310,6 +310,10 @@ int Mainloop::loop()
         _log_endpoint->stop();
     }
 
+    if (_tlog_endpoint != nullptr) {
+        _log_endpoint->stop();
+    }
+
     clear_endpoints();
 
     // free all remaning Timeouts
@@ -439,6 +443,13 @@ bool Mainloop::add_endpoints(const Configuration &config)
         }
         this->_log_endpoint->mark_unfinished_logs();
         g_endpoints.emplace_back(this->_log_endpoint);
+    }
+
+    // Create TLog endpoint
+    if (!conf.tlogs_dir.empty()) {
+        this->_tlog_endpoint = std::make_shared<TLog>(conf);
+        this->_tlog_endpoint->mark_unfinished_logs();
+        g_endpoints.emplace_back(this->_tlog_endpoint);
     }
 
     // Apply other options

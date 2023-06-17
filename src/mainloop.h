@@ -29,6 +29,7 @@
 #include "endpoint.h"
 #include "timeout.h"
 #include "ulog.h"
+#include "tlog.h"
 
 struct Configuration {
     std::string conf_file_name;        ///< CLI "conf-file" only!
@@ -112,6 +113,7 @@ private:
     std::vector<std::shared_ptr<Endpoint>> g_endpoints{};
     int g_tcp_fd = -1; ///< for TCP server
     std::shared_ptr<LogEndpoint> _log_endpoint{nullptr};
+    std::shared_ptr<LogEndpoint> _tlog_endpoint{nullptr};
 
     Timeout *_timeouts = nullptr;
 

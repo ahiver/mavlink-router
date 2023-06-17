@@ -45,6 +45,7 @@ struct LogOptions {
     unsigned long min_free_space;                 // conf "MinFreeSpace"
     unsigned long max_log_files;                  // conf "MaxLogFiles"
     int fcu_id{-1};                               // conf "LogSystemId"
+    std::string tlogs_dir;                         // conf "TLog" or CLI "tlog"
 };
 
 class LogEndpoint : public Endpoint {
